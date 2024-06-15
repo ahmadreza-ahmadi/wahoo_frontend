@@ -121,7 +121,7 @@ async function editWebsite(id: string, newWebsite: Website) {
 						class="capitalize px-2 py-1"
 						contenteditable="plaintext-only"
 						@input="
-							event => editWebsite(website._id, { ...website, name: event.target?.innerText })
+							event => editWebsite(website._id, { ...website, name: (event.target as HTMLElement).innerText })
 						"
 						>{{ website.name }}</span
 					>
