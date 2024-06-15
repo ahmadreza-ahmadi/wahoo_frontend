@@ -37,13 +37,15 @@ const enteredUrl = ref('');
 async function addWebsite() {
 	websiteAdding.value = true;
 	try {
-		await axios.post('https://wahoo-backend.vercel.app/website/create', {
+		const result = await axios.post('https://wahoo-backend.vercel.app/website/create', {
 			name: enteredName.value,
 			url: enteredUrl.value,
 		});
-		enteredName.value = '';
-		enteredUrl.value = '';
-		fetchWebsites();
+		if (result.data) {
+			websites.value.push(result.data);
+			enteredName.value = '';
+			enteredUrl.value = '';
+		}
 	} catch (error) {
 		console.error(error);
 	} finally {
