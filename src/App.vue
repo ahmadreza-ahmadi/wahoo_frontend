@@ -41,6 +41,8 @@ async function addWebsite() {
 			name: enteredName.value,
 			url: enteredUrl.value,
 		});
+		enteredName.value = '';
+		enteredUrl.value = '';
 		fetchWebsites();
 	} catch (error) {
 		console.error(error);
